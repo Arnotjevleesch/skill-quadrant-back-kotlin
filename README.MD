@@ -10,6 +10,11 @@
 - https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku
 - https://devcenter.heroku.com/articles/mongolab#connecting-to-existing-mlab-deployments-from-heroku
 
-# kotlin
+# kotlin vs spring
 
 - https://soat.developpez.com/tutoriels/kotlin-application-backend/
+- https://fabiomsr.github.io/from-java-to-kotlin/
+- http://blog.ippon.fr/2017/12/11/introduction-a-kotlin-pour-android/
+- https://spring.io/blog/2016/02/15/developing-spring-boot-applications-with-kotlin
+- https://github.com/Arnotjevleesch/kotlin-spring-realworld-example-app
+
