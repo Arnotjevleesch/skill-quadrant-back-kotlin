@@ -13,7 +13,6 @@ services:
     build: .
     ports:
       - 8080:8080
+    env_file: .env
     depends_on:
       - mongodb-sqb
-    environment:
-      - spring.data.mongodb.uri=${MONGODB_URI}
