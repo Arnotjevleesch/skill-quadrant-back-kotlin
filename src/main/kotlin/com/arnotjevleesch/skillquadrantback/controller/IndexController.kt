@@ -20,10 +20,10 @@ class IndexController {
     }
 
     @RequestMapping("/mongo")
-    fun mongo() {
+    fun mongo() : String {
 
         println("=========Repo manip================")
-        userSkillsRepository.deleteAll()
+        //userSkillsRepository.deleteAll()
 
         userSkillsRepository.save(
                 UserSkills(
@@ -40,10 +40,6 @@ class IndexController {
         )
 
         // fetch all customers
-        for (userSkills in userSkillsRepository.findAll()) {
-            println(userSkills)
-        }
-        println()
-
+        return userSkillsRepository.findAll().joinToString()
     }
 }

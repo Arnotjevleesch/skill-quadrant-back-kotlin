@@ -15,5 +15,5 @@ services:
       - 8080:8080
     depends_on:
       - mongodb-sqb
-    environment: 
-      - spring.data.mongodb.uri=mongodb://mongodb-sqb:27017/mongodb-sqb-db
+    environment:
+      - spring.data.mongodb.uri=${MONGODB_URI}

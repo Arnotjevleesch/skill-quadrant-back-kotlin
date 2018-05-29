@@ -1,6 +1,11 @@
 # build
 
+## dev
 - ./mvnw clean install
+
+- docker run -d --name mongodb-sqb -p 27017:27017 mongo:latest
+- mvn spring-boot:run
+or
 - docker-compose up --build
 
 # mongo vs spring vs heroku
