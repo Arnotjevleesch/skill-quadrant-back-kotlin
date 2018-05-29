@@ -8,10 +8,24 @@
 or
 - docker-compose up --build
 
+## heroku
+
+- install mlab add-on
+
+- heroku update
+- heroku login
+- heroku container:login
+- heroku container:push web
+- heroku container:release web
+
+
+
+
 # mongo vs spring vs heroku
 
 - https://spring.io/guides/gs/accessing-data-mongodb/
 - https://dev-pages.info/how-to-run-spring-boot-and-mongodb-in-docker-using-docker-compose/
+- https://devcenter.heroku.com/articles/container-registry-and-runtime
 - https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku
 - https://devcenter.heroku.com/articles/mongolab#connecting-to-existing-mlab-deployments-from-heroku
 
