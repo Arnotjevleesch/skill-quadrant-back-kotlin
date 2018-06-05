@@ -17,6 +17,9 @@ import org.springframework.security.crypto.password.PasswordEncoder
 @EnableWebSecurity
 class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 
+    @Value("\${user}")
+    lateinit var user : String
+
     @Value("\${password}")
     lateinit var password : String
 
@@ -32,7 +35,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
-                .withUser("user").password(password).roles("USER")
+                .withUser(user).password(password).roles("USER")
     }
 
     fun passwordEncoder(): PasswordEncoder {
