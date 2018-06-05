@@ -24,7 +24,7 @@ class IndexController {
 
         println("=========Repo manip================")
 
-        if (userSkillsRepository.findAll().size == 10) {
+        if (userSkillsRepository.findAll().size > 10) {
             userSkillsRepository.deleteAll()
         }
 

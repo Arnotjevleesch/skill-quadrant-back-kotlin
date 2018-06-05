@@ -8,9 +8,9 @@
 or
 - docker-compose up --build
 
-## endpoints
-
 - curl -I --user serge:dabordonseditvousetpuisonsedittout http://localhost:8080/mongo
+
+
 
 ## heroku
 
