@@ -1,18 +1,24 @@
 package com.arnotjevleesch.skillquadrantback
 
-import org.springframework.context.annotation.Bean
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-import org.springframework.security.core.userdetails.User
-import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.security.provisioning.InMemoryUserDetailsManager
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.DelegatingPasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder
+
+
 
 
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfig : WebSecurityConfigurerAdapter() {
+
+    @Value("\${password}")
+    lateinit var password : String
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
@@ -23,14 +29,17 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .and().httpBasic()
     }
 
-    @Bean
-    public override fun userDetailsService(): UserDetailsService {
-        val user = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("password")
-                .roles("USER")
-                .build()
-
-        return InMemoryUserDetailsManager(user)
+    override fun configure(auth: AuthenticationManagerBuilder) {
+        auth.inMemoryAuthentication()
+                .passwordEncoder(passwordEncoder())
+                .withUser("user").password(password).roles("USER")
     }
+
+    fun passwordEncoder(): PasswordEncoder {
+        val idForEncode = "bcrypt"
+        return DelegatingPasswordEncoder(
+                idForEncode,
+                mapOf(idForEncode to BCryptPasswordEncoder()))
+    }
+
 }
