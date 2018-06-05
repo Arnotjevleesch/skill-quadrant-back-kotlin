@@ -3,6 +3,7 @@ package com.arnotjevleesch.skillquadrantback
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import java.lang.management.ManagementFactory
 
 
 @SpringBootApplication
@@ -24,6 +25,13 @@ class SkillquadrantbackApplication : CommandLineRunner {
         for (item in listWithNulls) {
             //item?.let { println(it) } // prints A and ignores null
             item?.map { println(it) } // prints A and ignores null
+        }
+
+        println("==============JVM==================")
+        val runtimeMXBean = ManagementFactory.getRuntimeMXBean()
+        val jvmArgs = runtimeMXBean.inputArguments
+        for (arg in jvmArgs) {
+            println(arg)
         }
     }
 

@@ -23,7 +23,10 @@ class IndexController {
     fun mongo() : String {
 
         println("=========Repo manip================")
-        //userSkillsRepository.deleteAll()
+
+        if (userSkillsRepository.findAll().size == 10) {
+            userSkillsRepository.deleteAll()
+        }
 
         userSkillsRepository.save(
                 UserSkills(
@@ -38,6 +41,7 @@ class IndexController {
                         )
                 )
         )
+
 
         // fetch all customers
         return userSkillsRepository.findAll().joinToString()
